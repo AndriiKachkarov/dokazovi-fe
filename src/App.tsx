@@ -29,6 +29,8 @@ ReactGA.initialize('UA-197683102-1', {
 });
 
 export const App: React.FC = () => {
+  console.log('app renders');
+
   const [
     boundFetchDirections,
     boundFetchOrigins,
