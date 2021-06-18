@@ -24,6 +24,10 @@ const PostViewWrapper: React.FC = () => {
   );
   const [loadedPost, setLoadedPost] = useState<IPost>();
   const [statusCode, setStatusCode] = useState<number>();
+  const [
+    uniqueViewsCounterStatusCode,
+    setUniqueViewsCounterStatusCode,
+  ] = useState<LoadingStatusType>(LoadingStatusEnum.pending);
 
   const handlePostDeletion = () => {
     if (!loadedPost) return;
@@ -70,9 +74,10 @@ const PostViewWrapper: React.FC = () => {
         setLoadedPost((post) => {
           return { ...post, uniqueViewsCounter } as IPost;
         });
+        setUniqueViewsCounterStatusCode(LoadingStatusEnum.succeeded);
       })
       .catch((err) => {
-        console.log(err);
+        setUniqueViewsCounterStatusCode(LoadingStatusEnum.failed);
       });
   }, []);
 
@@ -87,6 +92,7 @@ const PostViewWrapper: React.FC = () => {
           <PageTitle title={loadedPost.title} />
 
           <PostView
+            uniqueViewsCounterStatusCode={uniqueViewsCounterStatusCode}
             post={loadedPost}
             modificationAllowed
             onDelete={handlePostDeletion}

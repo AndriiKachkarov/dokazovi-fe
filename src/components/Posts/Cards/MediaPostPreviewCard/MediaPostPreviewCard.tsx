@@ -12,6 +12,7 @@ export const MediaPostPreviewCard: React.FC<IPostPreviewCardProps> = ({
   post,
   shouldNotUseLink,
 }) => {
+  const CARD_TYPE_NAME = 'Медитека';
   const bgImageURL = post.previewImageUrl ? post.previewImageUrl : background;
   const classes = useStyles({ backgroundImageUrl: `url(${bgImageURL})` });
   const postLink = `/posts/${post.id}`;
@@ -30,7 +31,7 @@ export const MediaPostPreviewCard: React.FC<IPostPreviewCardProps> = ({
           variant="overline"
           component="span"
         >
-          Медитека
+          {CARD_TYPE_NAME}
         </Typography>
       </Box>
       <Box className={classes.body}>
