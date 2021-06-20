@@ -40,7 +40,7 @@ jobs:
 #          REACT_APP_GOOGLE_ID: ${{ secrets.REACT_APP_GOOGLE_ID }}
 #          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
 
-        uses: akhileshns/heroku-deploy@v3.12.12
+        uses: AndriiKachkarov/heroku-deploy
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "dokazovi-test"
@@ -55,5 +55,4 @@ jobs:
           NODE_ENV: production
           REACT_APP_IMGUR_CLIENT_ID: ${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
           REACT_APP_GOOGLE_ID: ${{ secrets.REACT_APP_GOOGLE_ID }}
-#          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
-          REACT_APP_BASE_URL: http://localhost:8080/api
+          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
