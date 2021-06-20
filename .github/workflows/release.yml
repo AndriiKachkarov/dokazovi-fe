@@ -32,6 +32,9 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }}
           docker_compose_file: 'docker-compose.prod.yml'
           heroku_apps: '[{"imagename":"dokazovi_fe","appname":"dokazovi-test","apptype":"web"}]'
+          docker_build_args: |
+            NODE_ENV
+            SECRET_KEY
         env:
           NODE_ENV: production
           REACT_APP_IMGUR_CLIENT_ID: ${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
