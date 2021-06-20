@@ -42,6 +42,8 @@ jobs:
           REACT_APP_GOOGLE_ID: ${{ secrets.REACT_APP_GOOGLE_ID }}
           REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
 
+#          docker-compose -f 1docker-compose.prod.yml build
+
 #        uses: akhileshns/heroku-deploy@v3.12.12
 #        with:
 #          heroku_api_key: ${{secrets.HEROKU_API_KEY}}

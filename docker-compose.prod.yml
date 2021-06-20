@@ -11,5 +11,3 @@ services:
       options:
         max-size: '10m'
         max-file: '5'
-    entrypoint:
-      - REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
