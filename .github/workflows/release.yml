@@ -51,6 +51,7 @@ jobs:
             REACT_APP_BASE_URL
             REACT_APP_IMGUR_CLIENT_ID
             REACT_APP_GOOGLE_ID
+            KIO
         env:
           NODE_ENV: production
           REACT_APP_IMGUR_CLIENT_ID: ${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
