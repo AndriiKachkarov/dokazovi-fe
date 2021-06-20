@@ -8,6 +8,8 @@ import { store } from './models/store';
 
 import './index.css';
 
+console.dir(process);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
