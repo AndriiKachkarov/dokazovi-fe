@@ -47,8 +47,10 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
           docker_build_args: |
-            NODE_ENV
-            SECRET_KEY
+          NODE_ENV
+          REACT_APP_IMGUR_CLIENT_ID
+          REACT_APP_GOOGLE_ID
+          REACT_APP_BASE_URL
         env:
           NODE_ENV: production
           REACT_APP_IMGUR_CLIENT_ID: ${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
