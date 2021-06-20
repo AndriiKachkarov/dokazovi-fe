@@ -5,19 +5,21 @@ import { Card, Box, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { useStyles } from '../styles/PostView.styles';
-import { IPost } from '../../../lib/types';
+import { IPost, LoadingStatusEnum } from '../../../lib/types';
 import { ConfirmationModalWithButton } from '../../../lib/components/Modals/ConfirmationModalWithButton';
 import PostInfo from '../../../../components/Posts/PostInfo/PostInfo';
 import TopSection from '../../../../components/Posts/TopSection/TopSection';
 import SecondTopSection from '../../../../components/Posts/SecondTopSection/SecondTopSection';
 
 export interface IPostViewProps {
+  uniqueViewsCounterStatusCode?: LoadingStatusEnum;
   post: IPost;
   modificationAllowed?: boolean;
   onDelete?: () => void;
 }
 
 const PostView: React.FC<IPostViewProps> = ({
+  uniqueViewsCounterStatusCode,
   post,
   modificationAllowed,
   onDelete,
@@ -66,7 +68,10 @@ const PostView: React.FC<IPostViewProps> = ({
             <SecondTopSection author={post.author} />
           )}
 
-          <PostInfo info={postInfo} />
+          <PostInfo
+            uniqueViewsCounterStatusCode={uniqueViewsCounterStatusCode}
+            info={postInfo}
+          />
           {post.type.name === 'Відео' && (
             <iframe
               className={classes.video}

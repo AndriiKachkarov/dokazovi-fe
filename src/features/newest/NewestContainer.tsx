@@ -9,6 +9,10 @@ import {
 import { getNewestPosts } from '../../old/lib/utilities/API/api';
 
 export const NewestContainer: React.FC = () => {
+  const EXPERT_OPINION_POSTS_LIST_TITLE = 'Думки експертів';
+  const MEDIA_POSTS_LIST_TITLE = 'Медитека';
+  const TRANSLATION_POSTS_LIST_TITLE = 'Переклади';
+  const VIDEO_POSTS_LIST_TITLE = 'Відео';
   const classes = useStyles();
   const [postsSets, setPostsSets] = useState<NewestPostResponseType[]>([]);
   const [loadingStatus, setLoadingStatus] = useState<LoadingStatusType>(
@@ -31,7 +35,7 @@ export const NewestContainer: React.FC = () => {
       <div className={classes.container}>
         <NewestPostsList
           loadingStatus={loadingStatus}
-          postsListTitle="Думки експертів"
+          postsListTitle={EXPERT_OPINION_POSTS_LIST_TITLE}
           postsListPath="materials?origins=1"
           postsList={
             postsSets[NewestTypeEnum.EXPERT_OPINION] &&
@@ -40,7 +44,7 @@ export const NewestContainer: React.FC = () => {
         />
         <NewestPostsList
           loadingStatus={loadingStatus}
-          postsListTitle="Медитека"
+          postsListTitle={MEDIA_POSTS_LIST_TITLE}
           postsListPath="materials?origins=2"
           postsList={
             postsSets[NewestTypeEnum.MEDIA] &&
@@ -49,7 +53,7 @@ export const NewestContainer: React.FC = () => {
         />
         <NewestPostsList
           loadingStatus={loadingStatus}
-          postsListTitle="Переклади"
+          postsListTitle={TRANSLATION_POSTS_LIST_TITLE}
           postsListPath="materials?origins=3"
           postsList={
             postsSets[NewestTypeEnum.TRANSLATION] &&
@@ -58,7 +62,7 @@ export const NewestContainer: React.FC = () => {
         />
         <NewestPostsList
           loadingStatus={loadingStatus}
-          postsListTitle="Відео"
+          postsListTitle={VIDEO_POSTS_LIST_TITLE}
           postsListPath="materials?types=2"
           postsList={
             postsSets[NewestTypeEnum.VIDEO] &&

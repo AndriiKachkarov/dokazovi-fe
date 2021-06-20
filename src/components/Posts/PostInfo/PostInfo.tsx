@@ -1,10 +1,16 @@
 import React from 'react';
 import { Skeleton } from '@material-ui/lab';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import { IDirection, IOrigin, IPostType } from '../../../old/lib/types';
+import {
+  IDirection,
+  IOrigin,
+  IPostType,
+  LoadingStatusEnum,
+} from '../../../old/lib/types';
 import { useStyles } from './PostInfo.styles';
 
 export interface IPostInfo {
+  uniqueViewsCounterStatusCode?: LoadingStatusEnum;
   info: {
     directions: IDirection[];
     origins: IOrigin[];
@@ -14,7 +20,10 @@ export interface IPostInfo {
   };
 }
 
-export default function PostInfo({ info }: IPostInfo): JSX.Element {
+export default function PostInfo({
+  info,
+  uniqueViewsCounterStatusCode,
+}: IPostInfo): JSX.Element {
   const { directions, origins, type, publishedAt, uniqueViewsCounter } = info;
 
   const classes = useStyles();
@@ -35,16 +44,20 @@ export default function PostInfo({ info }: IPostInfo): JSX.Element {
           )}
         {type && <li className={classes.origin}>{type.name}</li>}
         <li className={classes.createdAt}>{publishedAt}</li>
-        <li className={classes.icon}>
-          <VisibilityIcon fontSize="small" />
-        </li>
-        <li className={classes.counter}>
-          {uniqueViewsCounter === undefined ? (
-            <Skeleton width={40} height={20} />
-          ) : (
-            uniqueViewsCounter
-          )}
-        </li>
+        {uniqueViewsCounterStatusCode !== LoadingStatusEnum.failed && (
+          <>
+            <li className={classes.icon}>
+              <VisibilityIcon fontSize="small" />
+            </li>
+            <li className={classes.counter}>
+              {uniqueViewsCounterStatusCode === LoadingStatusEnum.pending ? (
+                <Skeleton width={40} height={20} />
+              ) : (
+                uniqueViewsCounter
+              )}
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );

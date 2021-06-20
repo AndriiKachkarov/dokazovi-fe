@@ -13,6 +13,7 @@ export const ExpertOpinionPostPreviewCard: React.FC<IPostPreviewCardProps> = ({
   post,
   shouldNotUseLink,
 }) => {
+  const CARD_TYPE_NAME = 'Думка експерта';
   const classes = useStyles();
   const expertLink = `/experts/${post.author.id}`;
   const postLink = `/posts/${post.id}`;
@@ -45,7 +46,7 @@ export const ExpertOpinionPostPreviewCard: React.FC<IPostPreviewCardProps> = ({
             variant="overline"
             component="span"
           >
-            Думка експерта
+            {CARD_TYPE_NAME}
           </Typography>
           <Typography
             className={classes.authorFullName}

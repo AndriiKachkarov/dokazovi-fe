@@ -12,6 +12,7 @@ export const TranslationPostPreviewCard: React.FC<IPostPreviewCardProps> = ({
   post,
   shouldNotUseLink,
 }) => {
+  const CARD_TYPE_NAME = 'Переклад';
   const bgImageURL = post.previewImageUrl ? post.previewImageUrl : background;
   const classes = useStyles({ backgroundImageUrl: bgImageURL });
   const postLink = `/posts/${post.id}`;
@@ -32,7 +33,7 @@ export const TranslationPostPreviewCard: React.FC<IPostPreviewCardProps> = ({
           variant="overline"
           component="span"
         >
-          Переклад
+          {CARD_TYPE_NAME}
         </Typography>
         <Typography
           gutterBottom
