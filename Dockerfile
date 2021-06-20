@@ -1,7 +1,7 @@
 # build environment
 FROM node:current as build
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
+# ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 RUN yarn install --immutable
 COPY . ./
