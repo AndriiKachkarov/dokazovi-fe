@@ -2,6 +2,7 @@
 FROM node:current as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
+ARG REACT_APP_BASE_URL
 COPY package.json ./
 RUN yarn install --immutable
 COPY . ./
