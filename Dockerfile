@@ -2,7 +2,7 @@
 FROM node:current as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
-ENV REACT_APP_BASE_URL notSecret
+ENV REACT_APP_BASE_URL http://localhost:8080/api
 ENV REACT_APP_GOOGLE_ID notSecret
 ENV REACT_APP_IMGUR_CLIENT_ID notSecret
 COPY package.json ./
