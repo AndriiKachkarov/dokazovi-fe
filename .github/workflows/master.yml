@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       # - name: Build the tagged Docker image
-      #   run: docker build -f Dockerfile -t dokazovi_fe .
+      #   run: docker build -f 1Dockerfile -t dokazovi_fe .
       # - name: Deploy on heroku
       #   id: heroku
       #   uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0
