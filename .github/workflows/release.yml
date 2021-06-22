@@ -27,12 +27,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Build the tagged Docker image
-        env:
-          NODE_ENV: production
-          REACT_APP_IMGUR_CLIENT_ID: ${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
-          REACT_APP_GOOGLE_ID: ${{ secrets.REACT_APP_GOOGLE_ID }}
-          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
-        run: docker build -f Dockerfile.prod --build-arg REACT_APP_IMGUR_CLIENT_ID=${{ secrets.REACT_APP_IMGUR_CLIENT_ID }} --build-arg REACT_APP_GOOGLE_ID=${{ secrets.REACT_APP_GOOGLE_ID }} --build-arg REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }} -t dokazovi_fe .
+        run: >
+          docker build -f Dockerfile.prod
+          --build-arg REACT_APP_IMGUR_CLIENT_ID=${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
+          --build-arg REACT_APP_GOOGLE_ID=${{ secrets.REACT_APP_GOOGLE_ID }}
+          --build-arg REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}
+          -t dokazovi_fe .
       - name: Deploy on heroku
         id: heroku
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0
@@ -41,11 +41,6 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }}
           docker_compose_file: 'docker-compose.prod.yml'
           heroku_apps: '[{"imagename":"dokazovi_fe","appname":"dokazovi-test","apptype":"web"}]'
-        env:
-          NODE_ENV: production
-          REACT_APP_IMGUR_CLIENT_ID: ${{ secrets.REACT_APP_IMGUR_CLIENT_ID }}
-          REACT_APP_GOOGLE_ID: ${{ secrets.REACT_APP_GOOGLE_ID }}
-          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
 
 #        run: docker-compose -f docker-compose.prod.yml build
 
